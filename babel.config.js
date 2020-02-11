@@ -16,6 +16,7 @@ module.exports = function babelConfig(api) {
             '@/i18n': './src/i18n',
             '@/redux': './src/redux',
             '@/sagas': './src/redux',
+            '@/services': './src/redux',
           },
         },
       ],

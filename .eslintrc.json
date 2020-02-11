@@ -7,6 +7,7 @@
     "airbnb"
   ],
   "globals": {
+    "__DEV__": true,
     "Atomics": "readonly",
     "SharedArrayBuffer": "readonly"
   },
@@ -98,7 +99,8 @@
           "@/assets",
           "@/i18n",
           "@/redux",
-          "@/sagas"
+          "@/sagas",
+          "@/services"
         ]
       }
     ]
