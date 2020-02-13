@@ -5,21 +5,29 @@ import { persistStore, persistReducer } from 'redux-persist';
 import createSagaMiddleware from 'redux-saga';
 import { fetchMiddleware } from './middlewares';
 
-const persistConfig = { key: 'root', storage: AsyncStorage, timeout: 10000 };
+const rootPersistConfig = { key: 'root', timeout: 10000, storage: AsyncStorage };
 
-// creates the store
-export default (rootReducer, rootSaga) => {
+export default (reducers, rootSaga) => {
+  const middleware = [];
+  const enhancers = [];
+
+  // Saga
   const sagaMiddleware = createSagaMiddleware();
+  middleware.push(sagaMiddleware);
 
-  const middleware = [sagaMiddleware, fetchMiddleware];
-  const enhancers = applyMiddleware(...middleware);
+  middleware.push(fetchMiddleware);
+  // Apply Middleware
+  enhancers.push(applyMiddleware(...middleware));
 
-  const devtoolsConfig = { hostname: 'localhost', port: 8000, realtime: true };
-  const appropriateCompose = __DEV__ ? composeWithDevTools(devtoolsConfig) : compose;
-
-  const finalReducer = persistReducer(persistConfig, rootReducer);
-  const store = createStore(finalReducer, appropriateCompose(...enhancers));
+  // Compose
+  const devtoolsConfig = { hostname: 'localhost', port: 8000 };
+  const composeEnhancers = __DEV__ ? composeWithDevTools(devtoolsConfig) : compose;
+  // Store
+  const rootReducer = persistReducer(rootPersistConfig, reducers);
+  const store = createStore(rootReducer, composeEnhancers(...enhancers));
   const persistor = persistStore(store);
+
+  // Kick off root saga
   const sagasManager = sagaMiddleware.run(rootSaga);
 
   return { store, persistor, sagasManager, sagaMiddleware };

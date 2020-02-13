@@ -2,21 +2,18 @@ import { combineReducers } from 'redux';
 import rootSaga from '@/sagas';
 import configureStore from './configureStore';
 
-export const reducers = combineReducers({
-  user: require('./UserRedux').default,
-  auth: require('./AuthRedux').default,
+const reducers = combineReducers({
+  user: require('./User').default,
 });
 
 export default () => {
-  // eslint-disable-next-line
-  let { store, persistor, sagasManager, sagaMiddleware } = configureStore(reducers, rootSaga);
-
+  const { store, persistor, sagaMiddleware, ...storeConfig } = configureStore(reducers, rootSaga);
+  let { sagasManager } = storeConfig;
   if (module.hot) {
     module.hot.accept(() => {
       store.replaceReducer(reducers);
-      const newYieldedSagas = require('@/sagas').default;
       sagasManager.cancel();
-      sagasManager.done.then(() => sagasManager = sagaMiddleware.run(newYieldedSagas));
+      sagasManager.done.then(() => { sagasManager = sagaMiddleware.run(rootSaga); });
     });
   }
 
