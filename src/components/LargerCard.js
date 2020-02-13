@@ -1,5 +1,7 @@
 import React from 'react';
+import { format, parseISO } from 'date-fns';
 import styled from 'styled-components/native';
+import { toCurrency } from '@/i18n';
 import { colors, layout } from '@/constants';
 import MaterialIcon from 'react-native-vector-icons/MaterialIcons';
 
@@ -25,20 +27,20 @@ const DateContainer = styled.View`
   ${layout.shadow}
 `;
 
-const Date = styled.Text`
+const DateBigText = styled.Text`
   font-size: ${layout.scale() * 24};
   color: ${colors.black(0.8)};
   font-weight: 900;
 `;
 
 const RightView = styled.View`
-  justify-content: space-between;
   padding-left: ${layout.scale() * 20};
+  justify-content: space-between;
   flex:1;
 `;
 
-const Title = styled.Text`
-  font-size: ${layout.scale() * 20};
+const Title = styled.Text.attrs({ ellipsizeMode: 'tail', numberOfLines: 1 })`
+  font-size: ${layout.scale() * 16};
   color: ${colors.black(0.8)};
   font-weight: 800;
 `;
@@ -46,38 +48,42 @@ const Title = styled.Text`
 const BottomView = styled.View`
   justify-content: space-between;
   flex-direction: row;
+  align-items: center;
 `;
 
 const Icon = styled(MaterialIcon).attrs(() => ({
-  size: layout.scale() * 24,
+  size: layout.scale() * 20,
   color: colors.yellow(),
 }))``;
 
 const BottomText = styled.Text`
   padding-left: ${layout.scale() * 5};
-  font-size: ${layout.scale() * 20};
+  font-size: ${layout.scale() * 16};
   color: ${colors.black(0.8)};
   font-weight: 400;
 `;
 
-export default React.memo(props => (
-  <Container>
-    <DateContainer>
-      <Date>01</Date>
-      <Date>12</Date>
-    </DateContainer>
-    <RightView>
-      <Title>Niver do Gui</Title>
-      <BottomView>
+export default React.memo(({ data = {} }) => {
+  const date = data.date ? parseISO(data.date) : new Date();
+  return (
+    <Container>
+      <DateContainer>
+        <DateBigText>{format(date, 'dd')}</DateBigText>
+        <DateBigText>{format(date, 'MM')}</DateBigText>
+      </DateContainer>
+      <RightView>
+        <Title>{data.title}</Title>
         <BottomView>
-          <Icon name="supervisor-account" />
-          <BottomText>15</BottomText>
+          <BottomView>
+            <Icon name="supervisor-account" />
+            <BottomText>{data.participants && data.participants.length}</BottomText>
+          </BottomView>
+          <BottomView>
+            <Icon name="monetization-on" />
+            <BottomText>{toCurrency(data.price || 0)}</BottomText>
+          </BottomView>
         </BottomView>
-        <BottomView>
-          <Icon name="monetization-on" />
-          <BottomText>RS 280,00</BottomText>
-        </BottomView>
-      </BottomView>
-    </RightView>
-  </Container>
-));
+      </RightView>
+    </Container>
+  );
+});

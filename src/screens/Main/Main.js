@@ -8,12 +8,11 @@ import loader from '@/assets/animetions/loader.json';
 
 export default React.memo(({ navigation }) => {
   useEffect(() => {
-    setTimeout(() => navigation.navigate('Barbecues'), 500);
+    setTimeout(() => navigation.navigate('Barbecues'), 3000);
   }, []);
 
   return (
     <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-      {/* <Text style={{ fontSize: 36 }}>Churras Trinca</Text> */}
       <LottieView source={loader} autoPlay loop resizeMode="contain" style={{ width: 200 }} />
     </View>
   );

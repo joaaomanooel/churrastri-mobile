@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
 import { t } from '@/i18n';
 import { Header, LargerCard } from '@/components';
-import { Container, Button, ListContainer } from './StyledComponent';
+import { Container, Button, ListContainer, EmptyState } from './StyledComponent';
 
 export default React.memo(() => {
   const [showButton, setShowButton] = useState(true);
+  const barbecues = [];
   return (
     <>
       <Container
@@ -13,15 +14,9 @@ export default React.memo(() => {
       >
         <Header />
         <ListContainer>
-          <LargerCard />
-          <LargerCard />
-          <LargerCard />
-          <LargerCard />
-          <LargerCard />
-          <LargerCard />
-          <LargerCard />
-          <LargerCard />
+          {barbecues.map(data => <LargerCard data={data} />)}
         </ListContainer>
+        {!barbecues.length && <EmptyState>{t('emptyStates.barbecues')}</EmptyState>}
       </Container>
       <Button show={showButton} text={t('addBarbecue').toUpperCase()} />
     </>
