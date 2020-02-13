@@ -8,7 +8,7 @@ import loader from '@/assets/animetions/loader.json';
 
 export default React.memo(({ navigation }) => {
   useEffect(() => {
-    setTimeout(() => navigation.navigate('Login'), 2000);
+    setTimeout(() => navigation.navigate('Barbecues'), 500);
   }, []);
 
   return (

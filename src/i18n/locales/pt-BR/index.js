@@ -1,5 +1,6 @@
-import login from './login';
-import global from './global';
-import emptyStates from './emptyStates';
-
-module.exports = { ...login, ...global, emptyStates };
+module.exports = {
+  emptyStates: require('./emptyStates'),
+  ...require('./barbecue').default,
+  ...require('./global').default,
+  ...require('./login').default,
+};

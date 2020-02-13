@@ -3,7 +3,7 @@ import { t } from '@/i18n';
 import { Input, Header, Button, TrincaLogo } from '@/components';
 import { Container, FormContainer } from './StyledComponent';
 
-export default () => {
+export default React.memo(() => {
   return (
     <Container>
       <Header />
@@ -20,4 +20,4 @@ export default () => {
       <TrincaLogo />
     </Container>
   );
-};
+});

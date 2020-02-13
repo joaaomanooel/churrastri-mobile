@@ -1,4 +1,4 @@
-module.exports = {
+export default ({
   enter: 'Entrar',
   advance: 'Avançar',
   alter: 'Alterar',
@@ -26,4 +26,4 @@ module.exports = {
   next: 'Próximo',
   delete: 'Excluir',
   isCurrentlyUnavailable: 'Está indisponivel no momento',
-};
+});

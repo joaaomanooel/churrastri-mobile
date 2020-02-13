@@ -2,12 +2,12 @@ import React from 'react';
 import styled from 'styled-components/native';
 import { colors, layout } from '@/constants';
 
-const Button = styled.TouchableOpacity`
+const Button = styled.TouchableOpacity.attrs({ hitSlop: layout.largeHitSlop, activeOpacity: 0.7 })`
   padding-horizontal: ${layout.scale() * 20};
   margin-horizontal: ${layout.scale() * 30};
   padding-vertical: ${layout.scale() * 15};
   margin-vertical: ${layout.scale() * 30};
-  border-radius: ${layout.scale() * 15};
+  border-radius: ${layout.scale() * 20};
   width: ${layout.screenWidth * 0.85};
   background-color: ${colors.black(0.8)};
   justify-content: center;
