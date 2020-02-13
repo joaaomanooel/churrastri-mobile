@@ -1,4 +1,5 @@
 module.exports = {
+  enter: 'Entrar',
   advance: 'Avançar',
   alter: 'Alterar',
   confirm: 'Confirmar',
