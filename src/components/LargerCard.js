@@ -22,7 +22,6 @@ const DateContainer = styled.View`
   padding-right: ${layout.scale() * 20};
   justify-content: center;
   align-items: center;
-  ${layout.shadow}
 `;
 
 const Date = styled.Text`
