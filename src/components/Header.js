@@ -1,4 +1,5 @@
 import React from 'react';
+import { t } from '@/i18n';
 import styled from 'styled-components/native';
 import { colors, layout, images } from '@/constants';
 
@@ -11,6 +12,7 @@ const TitleContainer = styled.ImageBackground`
 `;
 
 const Title = styled.Text`
+  letter-spacing: ${layout.scale() * 2};
   margin-top: ${layout.statusBarHeight};
   font-size: ${layout.scale() * 36};
   color: ${colors.black(0.8)};
@@ -20,6 +22,6 @@ const Title = styled.Text`
 
 export default React.memo(() => (
   <TitleContainer source={images.boxTitle}>
-    <Title>Agenda de Churras</Title>
+    <Title>{t('barbecueCalendar')}</Title>
   </TitleContainer>
 ));
