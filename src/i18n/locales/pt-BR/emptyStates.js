@@ -1,3 +1,3 @@
 export default ({
-  barbecues: 'Você não possui nenum churrasco marcado em sua agenda ainda.',
+  barbecues: 'Você não possui nenhum churrasco marcado em sua agenda ainda.',
 });

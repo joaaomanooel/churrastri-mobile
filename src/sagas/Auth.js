@@ -4,13 +4,13 @@ import * as AuthActions from '@/redux/Auth';
 import * as UserActions from '@/redux/User';
 
 
-export function* login({ payload: { onSuccess = () => { }, onError = () => { }, ...loginData } }) {
+export function* login({ payload: { loginData } }) {
   try {
     const userData = yield call(auth.login, loginData);
     yield put(UserActions.setUser(userData));
-    onSuccess();
+    yield put(AuthActions.loginSuccess());
   } catch (error) {
+    console.log(error);
     yield put(AuthActions.loginFailure());
-    onError();
   }
 }

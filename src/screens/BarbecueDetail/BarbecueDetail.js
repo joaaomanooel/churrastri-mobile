@@ -48,8 +48,8 @@ export default React.memo(({ navigation }) => {
       <DatePicker value={date} onSave={setDate} />
       <Input
         value={description}
-        onChangeText={setDescription}
         label={t('description')}
+        onChangeText={setDescription}
         placeholder={t('description')}
       />
       <Input

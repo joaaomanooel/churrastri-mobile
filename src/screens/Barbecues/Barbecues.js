@@ -3,9 +3,9 @@ import { t } from '@/i18n';
 import { Header, LargerCard } from '@/components';
 import { Container, Button, ListContainer, EmptyState } from './StyledComponent';
 
-export default React.memo(({ navigation }) => {
+export default React.memo(({ navigation, barbecues: bbq }) => {
   const [showButton, setShowButton] = useState(true);
-  const barbecues = [];
+  const [barbecues] = useState(bbq || []);
   return (
     <>
       <Container
@@ -14,7 +14,7 @@ export default React.memo(({ navigation }) => {
       >
         <Header />
         <ListContainer>
-          {barbecues.map(data => <LargerCard data={data} />)}
+          {barbecues.length && barbecues.map(data => <LargerCard data={data} />)}
         </ListContainer>
         {!barbecues.length && <EmptyState>{t('emptyStates.barbecues')}</EmptyState>}
       </Container>

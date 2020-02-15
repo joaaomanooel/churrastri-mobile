@@ -4,6 +4,8 @@ import configureStore from './configureStore';
 
 const reducers = combineReducers({
   user: require('./User').default,
+  fetch: require('./Fetch').default,
+  barbecues: require('./Barbecues').default,
 });
 
 export default () => {

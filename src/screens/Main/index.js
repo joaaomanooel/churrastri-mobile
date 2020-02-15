@@ -1,3 +1,6 @@
+import { connect } from 'react-redux';
 import Main from './Main';
 
-export default Main;
+const mapStateToProps = state => ({ user: state.user.data });
+
+export default connect(mapStateToProps)(Main);
