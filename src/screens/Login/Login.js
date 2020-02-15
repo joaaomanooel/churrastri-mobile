@@ -1,18 +1,13 @@
 import React, { useState, useEffect } from 'react';
-import { Alert } from 'react-native';
 import { t } from '@/i18n';
 import { Input, Header, Button, TrincaLogo } from '@/components';
 import { Container, FormContainer } from './StyledComponent';
 
-export default React.memo(({ navigation, login, loading, error, user }) => {
+export default React.memo(({ navigation, login, loading, user }) => {
   const [email, setEmail] = useState();
   const [password, setPassword] = useState();
 
   const handleLogin = () => login({ email, password });
-
-  useEffect(() => {
-    error && Alert.alert(t('error'), t('loginError'));
-  }, [error]);
 
   useEffect(() => {
     user._id && navigation.navigate('Main');

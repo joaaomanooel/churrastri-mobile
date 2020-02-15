@@ -4,7 +4,7 @@ import { Input, Header, DatePicker, Select } from '@/components';
 import { Alert } from 'react-native';
 import { Container, ArrowIcon, Button, ArrowContainer, FormView } from './StyledComponent';
 
-export default React.memo(({ navigation, users: usr, addBarbecues }) => {
+export default React.memo(({ navigation, users: usr, addBarbecues, loading }) => {
   const [showButton, setShowButton] = useState(true);
 
   const barbecue = navigation.getParam('barbecue') || {};
@@ -86,7 +86,12 @@ export default React.memo(({ navigation, users: usr, addBarbecues }) => {
           <Select data={users} participants={participants} onSave={setParticipants} />
         </FormView>
       </Container>
-      <Button text={t('save').toUpperCase()} onPress={handleSave} show={showButton} />
+      <Button
+        text={t('save').toUpperCase()}
+        onPress={handleSave}
+        disabled={loading}
+        show={showButton}
+      />
     </>
   );
 });
