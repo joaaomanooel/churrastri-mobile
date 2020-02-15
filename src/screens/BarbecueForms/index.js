@@ -2,7 +2,7 @@ import { connect } from 'react-redux';
 import * as BarbecuesActions from '@/redux/Barbecues';
 import * as UserActions from '@/redux/User';
 import { selectors as FetchSelector } from '@/redux/Fetch';
-import BarbecueDetail from './BarbecueDetail';
+import BarbecueForms from './BarbecueForms';
 
 const mapStateToProps = state => ({
   loading: FetchSelector.getFetching('ADD_BARBECUES', state),
@@ -16,4 +16,4 @@ const mapDispatchToProps = dispatch => ({
   addBarbecues: data => dispatch(BarbecuesActions.addBarbecuesRequest(data)),
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(BarbecueDetail);
+export default connect(mapStateToProps, mapDispatchToProps)(BarbecueForms);

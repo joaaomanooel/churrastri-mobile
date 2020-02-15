@@ -19,7 +19,7 @@ export default React.memo(({ navigation, barbecues: bbq }) => {
         {!barbecues.length && <EmptyState>{t('emptyStates.barbecues')}</EmptyState>}
       </Container>
       <Button
-        onPress={() => navigation.navigate('BarbecueDetail')}
+        onPress={() => navigation.navigate('BarbecueForms')}
         text={t('addBarbecue').toUpperCase()}
         show={showButton}
       />
