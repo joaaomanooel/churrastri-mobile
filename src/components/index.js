@@ -6,6 +6,6 @@ module.exports = ({
   DatePicker: require('./DatePicker').default,
   Header: require('./Header').default,
   Button: require('./Button').default,
-  // Select: require('./Select').default,
+  Select: require('./Select').default,
   Input: require('./Input').default,
 });

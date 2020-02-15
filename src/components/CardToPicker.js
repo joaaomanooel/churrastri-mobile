@@ -32,7 +32,8 @@ export default React.memo(({ onPress = {}, label, value }) => {
     <Touchable onPress={onPress}>
       <Label>{label}</Label>
       <Input>
-        <InputContent>{value}</InputContent>
+        {!value && <InputContent style={{ color: colors.black(0.3) }}>Selecione</InputContent>}
+        <InputContent ellipsizeMode="tail" numberOfLines={1}>{value}</InputContent>
       </Input>
     </Touchable>
   );
