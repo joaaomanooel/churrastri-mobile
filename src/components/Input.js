@@ -26,6 +26,6 @@ const Input = styled.TextInput`
 export default React.memo(props => (
   <Container style={props.containerStyle}>
     <Label style={props.labelStyle}>{props.label}</Label>
-    <Input on text {...props} />
+    <Input {...props} />
   </Container>
 ));

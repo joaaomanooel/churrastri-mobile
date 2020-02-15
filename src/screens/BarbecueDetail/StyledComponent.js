@@ -1,13 +1,17 @@
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import styled from 'styled-components/native';
 import { colors, layout } from '@/constants';
-import { Button as ButtonCP } from '@/components';
+import { AnimatedButton as ButtonCP } from '@/components';
 
 
-export const Container = styled.View`
+export const Container = styled.ScrollView`
   height: ${layout.screenHeight};
   width: ${layout.screenWidth};
   flex: 1;
+`;
+
+export const FormView = styled.KeyboardAvoidingView`
+  margin-bottom: ${layout.scale() * 100};
 `;
 
 export const ArrowContainer = styled.TouchableOpacity.attrs({ activeOpacity: 0.7 })`

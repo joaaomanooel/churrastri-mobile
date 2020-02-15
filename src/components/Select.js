@@ -50,9 +50,9 @@ const Name = styled.Text`
 
 const ListView = styled.ScrollView``;
 
-export default function components({ data: participants = [], onSave = () => { } }) {
+export default function components({ data: usr = [], participants, onSave = () => { } }) {
   const [show, setShow] = useState(false);
-  const [data, setData] = useState(participants);
+  const [data, setData] = useState(usr || []);
 
   const handleItem = (item) => {
     const users = data.filter(i => i._id !== item._id);
@@ -62,6 +62,10 @@ export default function components({ data: participants = [], onSave = () => { }
   const sortByName = e => e.sort((a, b) => {
     if (a.name > b.name) return 1;
     if (a.name < b.name) return -1;
+    if (a.createdAt > b.createdAt) return 1;
+    if (a.createdAt < b.createdAt) return -1;
+    if (a._id > b._id) return 1;
+    if (a._id < b._id) return -1;
     return 0;
   });
 
@@ -73,7 +77,7 @@ export default function components({ data: participants = [], onSave = () => { }
   return (
     <>
       <CardToPicker
-        value={`${[...data.filter(i => i.selected).map(i => i.selected && i.name)]}`}
+        value={`${[...participants.map(i => i.selected && i.name)]}`}
         onPress={() => setShow(true)}
         label={t('participants')}
       />
