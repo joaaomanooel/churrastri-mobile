@@ -55,7 +55,7 @@ export default React.memo(({ onSave, value }) => {
   return (
     <>
       <CardToPicker
-        value={format(currentDate, 'dd/MM/yyyy')}
+        value={`${format(currentDate, 'dd/MM/yyyy')}`}
         onPress={() => setShow(true)}
         label={t('date')}
       />
