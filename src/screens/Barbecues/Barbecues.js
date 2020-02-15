@@ -3,7 +3,7 @@ import { t } from '@/i18n';
 import { Header, LargerCard } from '@/components';
 import { Container, Button, ListContainer, EmptyState } from './StyledComponent';
 
-export default React.memo(() => {
+export default React.memo(({ navigation }) => {
   const [showButton, setShowButton] = useState(true);
   const barbecues = [];
   return (
@@ -18,7 +18,11 @@ export default React.memo(() => {
         </ListContainer>
         {!barbecues.length && <EmptyState>{t('emptyStates.barbecues')}</EmptyState>}
       </Container>
-      <Button show={showButton} text={t('addBarbecue').toUpperCase()} />
+      <Button
+        onPress={() => navigation.navigate('BarbecueDetail')}
+        text={t('addBarbecue').toUpperCase()}
+        show={showButton}
+      />
     </>
   );
 });

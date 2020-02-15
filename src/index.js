@@ -1,7 +1,7 @@
 import React from 'react';
-import createStore from '@/redux';
-import { Provider } from 'react-redux';
-import { PersistGate } from 'redux-persist/lib/integration/react';
+// import createStore from '@/redux';
+// import { Provider } from 'react-redux';
+// import { PersistGate } from 'redux-persist/lib/integration/react';
 import AppNavigator from './navigation/index';
 import './config/reactotronConfig';
 

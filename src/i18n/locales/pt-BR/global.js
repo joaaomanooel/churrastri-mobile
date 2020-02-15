@@ -26,4 +26,5 @@ export default ({
   next: 'Próximo',
   delete: 'Excluir',
   isCurrentlyUnavailable: 'Está indisponivel no momento',
+  barbecueCalendar: 'Agenda de Churras',
 });
