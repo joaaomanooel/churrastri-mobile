@@ -1,5 +1,6 @@
-export default ({
+module.exports = ({
+  api: require('./api').default,
   user: require('./user'),
   auth: require('./auth'),
-  api: require('./api'),
+  barbecues: require('./barbecues'),
 });

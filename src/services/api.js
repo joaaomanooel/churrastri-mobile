@@ -1,15 +1,15 @@
 import axios from 'axios';
 import { Alert } from 'react-native';
-import * as authActions from '@/redux/authActions';
-import { store, AppNavigatorRef } from '@/root';
+import * as authActions from '@/redux/Auth';
 import { t } from '@/i18n';
+import { store, AppNavigatorRef } from '../index';
 
-
-const API_URL = 'localhost:5000';
-const { user: { accessToken: Authorization } } = store.getState();
-const client = axios.create({ baseURL: API_URL, timeout: 20000, headers: { Authorization } });
 
 const request = (options) => {
+  const API_URL = 'http://localhost:5000/api/v1';
+  const { user: { data: { accessToken } } } = store.getState();
+  const headers = { Authorization: `Bearer ${accessToken}` };
+  const client = axios.create({ baseURL: API_URL, timeout: 20000, headers });
   const onSuccess = (response) => {
     if (response.status !== 200) return response.status;
     return response.data;
@@ -18,7 +18,7 @@ const request = (options) => {
   const updateAccessToken = async () => {
     let newAccessToken;
     const { user } = await store.getState();
-    const { refreshToken } = user;
+    const { refreshToken } = user.data;
     try {
       const { data } = await client({
         method: 'post',
@@ -56,6 +56,7 @@ const request = (options) => {
     }
     return Promise.reject(error.response || error.message);
   };
+
   return client(options).then(onSuccess).catch(onError);
 };
 

@@ -1,6 +1,6 @@
 import api from './api';
 
-const baseUrl = 'users';
+const baseUrl = 'barbecues';
 
 export const getAll = () => api({ method: 'get', url: baseUrl });
 export const insert = data => api({ method: 'post', url: baseUrl, data });
