@@ -5,19 +5,6 @@ import { toCurrency } from '@/i18n';
 import { colors, layout } from '@/constants';
 import MaterialIcon from 'react-native-vector-icons/MaterialIcons';
 
-const Container = styled.TouchableOpacity.attrs({ activeOpacity: 0.7 })`
-  padding-horizontal: ${layout.scale() * 20};
-  padding-vertical: ${layout.scale() * 20};
-  margin-bottom: ${layout.scale() * 10};
-  background-color: ${colors.white()};
-  width: ${layout.screenWidth * 0.9};
-  height: ${layout.scale() * 100};
-  flex-direction: row;
-  align-self: center;
-  border-radius: 2;
-  ${layout.shadow}
-`;
-
 const DateContainer = styled.View`
   border-right-width: ${layout.scale() * 3};
   border-right-color: ${colors.black(0.8)};
@@ -27,7 +14,7 @@ const DateContainer = styled.View`
 `;
 
 const DateBigText = styled.Text`
-  font-size: ${layout.scale() * 24};
+  font-size: ${({ contentSize }) => contentSize * (layout.scale() * 24)};
   color: ${colors.black(0.8)};
   font-weight: 900;
 `;
@@ -39,7 +26,7 @@ const RightView = styled.View`
 `;
 
 const Title = styled.Text.attrs({ ellipsizeMode: 'tail', numberOfLines: 1 })`
-  font-size: ${layout.scale() * 16};
+  font-size: ${({ contentSize }) => contentSize * (layout.scale() * 16)};
   color: ${colors.black(0.8)};
   font-weight: 800;
 `;
@@ -50,39 +37,41 @@ const BottomView = styled.View`
   align-items: center;
 `;
 
-const Icon = styled(MaterialIcon).attrs(() => ({
-  size: layout.scale() * 20,
+const Icon = styled(MaterialIcon).attrs(({ contentSize }) => ({
+  size: contentSize * layout.scale() * 20,
   color: colors.yellow(),
 }))``;
 
 const BottomText = styled.Text`
   padding-left: ${layout.scale() * 5};
-  font-size: ${layout.scale() * 16};
+  font-size: ${({ contentSize }) => contentSize * (layout.scale() * 16)};
   color: ${colors.black(0.8)};
   font-weight: 400;
 `;
 
-export default React.memo(({ data = {} }) => {
+export default React.memo(({ data = {}, size = 1 }) => {
   const date = data.date ? parseISO(data.date) : new Date();
   return (
-    <Container>
+    <>
       <DateContainer>
-        <DateBigText>{format(date, 'dd')}</DateBigText>
-        <DateBigText>{format(date, 'MM')}</DateBigText>
+        <DateBigText contentSize={size}>{format(date, 'dd')}</DateBigText>
+        <DateBigText contentSize={size}>{format(date, 'MM')}</DateBigText>
       </DateContainer>
       <RightView>
-        <Title>{data.title}</Title>
+        <Title contentSize={size}>{data.title}</Title>
         <BottomView>
           <BottomView>
-            <Icon name="supervisor-account" />
-            <BottomText>{data.participants && data.participants.length}</BottomText>
+            <Icon name="supervisor-account" contentSize={size} />
+            <BottomText contentSize={size}>
+              {data.participants && data.participants.length || 0}
+            </BottomText>
           </BottomView>
           <BottomView>
-            <Icon name="monetization-on" />
-            <BottomText>{toCurrency(data.price || 0)}</BottomText>
+            <Icon contentSize={size} name="monetization-on" />
+            <BottomText contentSize={size}>{toCurrency(data.price || 0)}</BottomText>
           </BottomView>
         </BottomView>
       </RightView>
-    </Container>
+    </>
   );
 });
