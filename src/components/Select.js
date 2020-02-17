@@ -1,6 +1,6 @@
 import { t } from '@/i18n';
 import Modal from 'react-native-modal';
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import styled from 'styled-components/native';
 import { colors, layout } from '@/constants';
 import CardToPicker from './CardToPicker';
@@ -50,9 +50,14 @@ const Name = styled.Text`
 
 const ListView = styled.ScrollView``;
 
-export default function components({ data: usr = [], participants, onSave = () => { } }) {
+export default React.memo(({ data: usr = [], participants, onSave = () => { } }) => {
   const [show, setShow] = useState(false);
   const [data, setData] = useState(usr || []);
+  const [oldData, setOldData] = useState(usr || []);
+
+  useEffect(() => {
+    setData(usr);
+  }, [usr]);
 
   const handleItem = (item) => {
     const users = data.filter(i => i._id !== item._id);
@@ -71,6 +76,12 @@ export default function components({ data: usr = [], participants, onSave = () =
 
   const save = () => {
     onSave(data.filter(i => i.selected));
+    setOldData(data);
+    setShow(false);
+  };
+
+  const cancel = () => {
+    setData(oldData);
     setShow(false);
   };
 
@@ -84,18 +95,20 @@ export default function components({ data: usr = [], participants, onSave = () =
       <Modal style={{ padding: 0 }} useNativeDriver isVisible={show}>
         <PickerContainer>
           <ButtomContainer>
-            <Touchable onPress={() => setShow(false)}><Text>{t('cancel')}</Text></Touchable>
+            <Touchable onPress={cancel}><Text>{t('cancel')}</Text></Touchable>
             <Touchable onPress={save}><Text>{t('save')}</Text></Touchable>
           </ButtomContainer>
           <ListView>
-            {sortByName(data).map(i => (
-              <ItemContainer key={i._id} selected={i.selected} onPress={() => handleItem(i)}>
-                <Name ellipsizeMode="tail" numberOfLines={1}>{i.name}</Name>
-              </ItemContainer>
-            ))}
+            {sortByName(data).map((i) => {
+              return (
+                <ItemContainer key={i._id} selected={i.selected} onPress={() => handleItem(i)}>
+                  <Name ellipsizeMode="tail" numberOfLines={1}>{i.name}</Name>
+                </ItemContainer>
+              );
+            })}
           </ListView>
         </PickerContainer>
       </Modal>
     </>
   );
-}
+});

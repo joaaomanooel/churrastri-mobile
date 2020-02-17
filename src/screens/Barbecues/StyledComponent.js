@@ -28,3 +28,16 @@ export const EmptyState = styled.Text`
   text-align: center;
   font-weight: 900;
 `;
+
+export const CardContainer = styled.TouchableOpacity.attrs({ activeOpacity: 0.7 })`
+  padding-horizontal: ${layout.scale() * 20};
+  padding-vertical: ${layout.scale() * 20};
+  margin-bottom: ${layout.scale() * 10};
+  background-color: ${colors.white()};
+  width: ${layout.screenWidth * 0.9};
+  height: ${layout.scale() * 100};
+  flex-direction: row;
+  align-self: center;
+  border-radius: 2;
+  ${layout.shadow}
+`;

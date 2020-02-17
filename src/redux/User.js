@@ -1,4 +1,5 @@
 import { createAction, handleActions } from 'redux-actions';
+import { resetData } from './Auth';
 
 export const findUsersRequest = createAction('FIND_USER_REQUEST');
 export const findUsersSuccess = createAction('FIND_USER_SUCCESS');
@@ -21,6 +22,7 @@ export const setUser = createAction('SET_USER');
 const INITIAL_STATE = { data: {}, users: [] };
 
 export default handleActions({
+  [resetData]: () => INITIAL_STATE,
   [setUser]: (state, { payload }) => ({ ...state, data: payload }),
   [findUsersSuccess]: (state, { payload }) => ({ ...state, users: payload }),
   [addUserSuccess]: (state, { payload }) => ({ ...state, data: payload }),

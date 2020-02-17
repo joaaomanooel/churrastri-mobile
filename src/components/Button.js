@@ -22,8 +22,8 @@ const ButtonText = styled.Text`
   font-weight: bold;
 `;
 
-export default React.memo(props => (
+export default React.memo(({ text = '', ...props }) => (
   <Button {...props}>
-    <ButtonText style={props.textStyle}>{props.text}</ButtonText>
+    <ButtonText style={props.textStyle}>{text.toUpperCase()}</ButtonText>
   </Button>
 ));

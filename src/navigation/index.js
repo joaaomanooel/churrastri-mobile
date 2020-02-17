@@ -12,6 +12,7 @@ const screens = {
   Login: require('@/screens/Login').default,
   Barbecues: require('@/screens/Barbecues').default,
   BarbecueForms: require('@/screens/BarbecueForms').default,
+  BarbecueDetail: require('@/screens/BarbecueDetail').default,
 };
 
 const switchNavigator = createStackNavigator(screens, InitialScreen);

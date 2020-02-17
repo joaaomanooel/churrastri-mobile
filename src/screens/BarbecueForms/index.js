@@ -9,11 +9,14 @@ const mapStateToProps = state => ({
   error: FetchSelector.getError('ADD_BARBECUES', state),
   barbecues: state.barbecues.barbecues,
   users: state.user.users,
+  user: state.user.data,
 });
 
 const mapDispatchToProps = dispatch => ({
   getUsers: dispatch(UserActions.findUsersRequest()),
   addBarbecues: data => dispatch(BarbecuesActions.addBarbecuesRequest(data)),
+  updateBarbecues: data => dispatch(BarbecuesActions.updateBarbecuesRequest(data)),
+  removeBarbecues: data => dispatch(BarbecuesActions.removeBarbecuesRequest(data)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(BarbecueForms);

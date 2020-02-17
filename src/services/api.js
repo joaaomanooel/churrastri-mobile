@@ -1,12 +1,13 @@
 import axios from 'axios';
 import { Alert } from 'react-native';
 import * as authActions from '@/redux/Auth';
+import * as UserActions from '@/redux/User';
 import { t } from '@/i18n';
 import { store, AppNavigatorRef } from '../index';
 
 
 const request = (options) => {
-  const API_URL = 'http://localhost:5000/api/v1';
+  const API_URL = 'https://churrastri.herokuapp.com/api/v1';
   const { user: { data: { accessToken } } } = store.getState();
   const headers = { Authorization: `Bearer ${accessToken}` };
   const client = axios.create({ baseURL: API_URL, timeout: 20000, headers });
@@ -30,7 +31,7 @@ const request = (options) => {
         newAccessToken = data.access_token;
         user.accessToken = data.access_token;
         user.refreshToken = data.refresh_token;
-        await store.dispatch(authActions.updateUser(user));
+        await store.dispatch(UserActions.updateUserSuccess(user));
       }
       return newAccessToken;
     } catch (err) {

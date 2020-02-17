@@ -1,7 +1,7 @@
-import Icon from 'react-native-vector-icons/MaterialIcons';
+import RNIcon from 'react-native-vector-icons/MaterialCommunityIcons';
 import styled from 'styled-components/native';
 import { colors, layout } from '@/constants';
-import { AnimatedButton as ButtonCP } from '@/components';
+import { Button as ButtonCP } from '@/components';
 
 
 export const Container = styled.ScrollView`
@@ -10,19 +10,23 @@ export const Container = styled.ScrollView`
   flex: 1;
 `;
 
-export const FormView = styled.KeyboardAvoidingView`
-  margin-bottom: ${layout.scale() * 100};
-`;
+export const FormView = styled.KeyboardAvoidingView``;
 
-export const ArrowContainer = styled.TouchableOpacity.attrs({ activeOpacity: 0.7 })`
+const IconContainer = styled.TouchableOpacity.attrs({ activeOpacity: 0.7 })`
   position: absolute;
   z-index: 15;
-  left: 20;
   top: 50;
 `;
 
-export const ArrowIcon = styled(Icon).attrs(() => ({
-  name: 'arrow-back',
+export const ArrowContainer = styled(IconContainer)`
+  left: 20;
+`;
+
+export const TrashContainer = styled(IconContainer)`
+  right: 20;
+`;
+
+export const Icon = styled(RNIcon).attrs(() => ({
   size: layout.scale() * 30,
   color: colors.black(0.8),
 }))``;

@@ -6,7 +6,7 @@ import loader from '@/assets/animetions/loader.json';
 
 // import { Container } from './styles';
 
-export default React.memo(({ navigation, user }) => {
+export default ({ navigation, user }) => {
   useEffect(() => {
     !user._id
       ? navigation.navigate('Login')
@@ -18,4 +18,4 @@ export default React.memo(({ navigation, user }) => {
       <LottieView source={loader} autoPlay loop resizeMode="contain" style={{ width: 200 }} />
     </View>
   );
-});
+};

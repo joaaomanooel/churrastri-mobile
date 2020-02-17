@@ -3,7 +3,7 @@ import { format, parseISO } from 'date-fns';
 import styled from 'styled-components/native';
 import { toCurrency } from '@/i18n';
 import { colors, layout } from '@/constants';
-import MaterialIcon from 'react-native-vector-icons/MaterialIcons';
+import MaterialIcon from 'react-native-vector-icons/MaterialCommunityIcons';
 
 const DateContainer = styled.View`
   border-right-width: ${layout.scale() * 3};
@@ -61,13 +61,12 @@ export default React.memo(({ data = {}, size = 1 }) => {
         <Title contentSize={size}>{data.title}</Title>
         <BottomView>
           <BottomView>
-            <Icon name="supervisor-account" contentSize={size} />
+            <Icon name="account-multiple-outline" contentSize={size} />
             <BottomText contentSize={size}>
               {data.participants && data.participants.length || 0}
             </BottomText>
           </BottomView>
           <BottomView>
-            <Icon contentSize={size} name="monetization-on" />
             <BottomText contentSize={size}>{toCurrency(data.price || 0)}</BottomText>
           </BottomView>
         </BottomView>

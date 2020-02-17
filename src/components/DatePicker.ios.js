@@ -1,7 +1,7 @@
 import { t } from '@/i18n';
 import Modal from 'react-native-modal';
 import React, { useState } from 'react';
-import { format, isValid } from 'date-fns';
+import { format, isValid, parseISO } from 'date-fns';
 import styled from 'styled-components/native';
 import DatePicker from '@react-native-community/datetimepicker';
 import { colors, layout } from '@/constants';
@@ -36,8 +36,9 @@ const Text = styled.Text`
 `;
 
 export default React.memo(({ onSave, value }) => {
-  const [date, setDate] = useState(isValid(value) ? value : new Date());
-  const [currentDate, setCurrentDate] = useState(isValid(value) ? value : new Date());
+  const dt = parseISO(value);
+  const [date, setDate] = useState(isValid(dt) ? dt : new Date());
+  const [currentDate, setCurrentDate] = useState(isValid(dt) ? dt : new Date());
   const [show, setShow] = useState(false);
 
   const handleDate = (_event, newDate) => {

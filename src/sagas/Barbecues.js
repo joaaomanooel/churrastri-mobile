@@ -19,8 +19,31 @@ export function* insert({ payload }) {
   try {
     yield call(barbecues.insert, payload);
     yield put(BarbecuesActions.addBarbecuesSuccess());
+    yield put(BarbecuesActions.getBarbecuesRequest());
   } catch (error) {
     Alert.alert(t('error'), t('addBarbecueError'));
     yield put(BarbecuesActions.addBarbecuesFailure());
+  }
+}
+
+export function* update({ payload }) {
+  try {
+    yield call(barbecues.update, payload);
+    yield put(BarbecuesActions.updateBarbecuesSuccess());
+    yield put(BarbecuesActions.getBarbecuesRequest());
+  } catch (error) {
+    Alert.alert(t('error'), t('updateBarbecueError'));
+    yield put(BarbecuesActions.updateBarbecuesFailure());
+  }
+}
+
+export function* remove({ payload }) {
+  try {
+    yield call(barbecues.remove, payload);
+    yield put(BarbecuesActions.removeBarbecuesSuccess());
+    yield put(BarbecuesActions.getBarbecuesRequest());
+  } catch (error) {
+    Alert.alert(t('error'), t('removeBarbecueError'));
+    yield put(BarbecuesActions.removeBarbecuesFailure());
   }
 }

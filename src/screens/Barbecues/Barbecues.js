@@ -1,11 +1,16 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { t } from '@/i18n';
 import { Header, LargerCard } from '@/components';
-import { Container, Button, ListContainer, EmptyState } from './StyledComponent';
+import { Container, Button, ListContainer, EmptyState, CardContainer } from './StyledComponent';
 
-export default React.memo(({ navigation, barbecues: bbq }) => {
+export default ({ navigation, barbecues: bbq }) => {
   const [showButton, setShowButton] = useState(true);
-  const [barbecues] = useState(bbq || []);
+  const [barbecues, setBarbecues] = useState(bbq || []);
+
+  useEffect(() => {
+    setBarbecues(bbq || []);
+  }, [bbq]);
+
   return (
     <>
       <Container
@@ -14,15 +19,19 @@ export default React.memo(({ navigation, barbecues: bbq }) => {
       >
         <Header />
         <ListContainer>
-          {barbecues.length && barbecues.map(data => <LargerCard data={data} />)}
+          {barbecues.length && barbecues.map(barbecue => (
+            <CardContainer onPress={() => navigation.navigate('BarbecueDetail', { barbecue })}>
+              <LargerCard data={barbecue} />
+            </CardContainer>
+          ))}
         </ListContainer>
         {!barbecues.length && <EmptyState>{t('emptyStates.barbecues')}</EmptyState>}
       </Container>
       <Button
         onPress={() => navigation.navigate('BarbecueForms')}
-        text={t('addBarbecue').toUpperCase()}
+        text={t('addBarbecue')}
         show={showButton}
       />
     </>
   );
-});
+};

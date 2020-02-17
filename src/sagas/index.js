@@ -22,5 +22,7 @@ export default function* root() {
     // BARBECUES
     takeLatest(BarbecuesActions.getBarbecuesRequest().type, BarbecuesSagas.getAll),
     takeLatest(BarbecuesActions.addBarbecuesRequest().type, BarbecuesSagas.insert),
+    takeLatest(BarbecuesActions.updateBarbecuesRequest().type, BarbecuesSagas.update),
+    takeLatest(BarbecuesActions.removeBarbecuesRequest().type, BarbecuesSagas.remove),
   ]);
 }

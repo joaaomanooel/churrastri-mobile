@@ -3,7 +3,7 @@ import { t } from '@/i18n';
 import { Input, Header, Button, TrincaLogo } from '@/components';
 import { Container, FormContainer } from './StyledComponent';
 
-export default React.memo(({ navigation, login, loading, user }) => {
+export default ({ navigation, login, loading, user }) => {
   const [email, setEmail] = useState();
   const [password, setPassword] = useState();
 
@@ -31,9 +31,9 @@ export default React.memo(({ navigation, login, loading, user }) => {
           value={password}
           secureTextEntry
         />
-        <Button disabled={loading} text={t('enter').toUpperCase()} onPress={handleLogin} />
+        <Button disabled={loading} text={t('enter')} onPress={handleLogin} />
       </FormContainer>
       <TrincaLogo />
     </Container>
   );
-});
+};
