@@ -7,8 +7,8 @@ import loader from '@/assets/animetions/loader.json';
 export default ({ navigation, user }) => {
   useEffect(() => {
     !user._id
-      ? navigation.navigate('Login')
-      : setTimeout(() => navigation.navigate('Barbecues'), 3000);
+      ? navigation.replace('Login')
+      : setTimeout(() => navigation.replace('Barbecues'), 3000);
   }, [user]);
 
   return !!user._id && (
