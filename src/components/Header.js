@@ -4,7 +4,7 @@ import styled from 'styled-components/native';
 import { colors, layout, images } from '@/constants';
 
 const TitleContainer = styled.ImageBackground`
-  height: ${layout.screenHeight / (layout.scale() * 4)};
+  height: ${layout.statusBarHeight + (layout.screenHeight / (layout.scale() * 3.3))};
   background-color: ${colors.yellow()};
   width: ${layout.screenWidth};
   justify-content: center;

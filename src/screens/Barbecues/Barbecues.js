@@ -19,7 +19,7 @@ export default ({ navigation, barbecues: bbq }) => {
       >
         <Header />
         <ListContainer>
-          {barbecues.length && barbecues.map(barbecue => (
+          {!!barbecues.length && barbecues.map(barbecue => (
             <CardContainer onPress={() => navigation.navigate('BarbecueDetail', { barbecue })}>
               <LargerCard data={barbecue} />
             </CardContainer>

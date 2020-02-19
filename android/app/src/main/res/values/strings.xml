@@ -1,16 +1,5 @@
 <resources>
-    <string name="app_name">churrasTri</string>
+    <string name="app_name">Churras Tri</string>
     <string name="appCenterCrashes_whenToSendCrashes" moduleConfig="true" translatable="false">DO_NOT_ASK_JAVASCRIPT</string>
     <string name="appCenterAnalytics_whenToEnableAnalytics" moduleConfig="true" translatable="false">ALWAYS_SEND</string>
-
-    <!-- Base application theme. -->
-    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
-        <!-- Customize your theme here. -->
-        <item name="android:datePickerDialogTheme">@style/Dialog.Theme</item>
-    </style>
-
-	  <style name="Dialog.Theme" parent="Theme.AppCompat.Light.Dialog">
-	      <item name="colorAccent">#FFD836</item>
-	      <item name="android:textColorPrimary">#000000CC</item>
- 	  </style>
 </resources>

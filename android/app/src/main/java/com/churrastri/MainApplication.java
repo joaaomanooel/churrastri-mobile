@@ -12,6 +12,7 @@ import java.util.List;
 
 import com.airbnb.android.react.lottie.LottiePackage;
 import com.oblador.vectoricons.VectorIconsPackage;
+import com.reactcommunity.rndatetimepicker.RNDateTimePickerPackage;
 
 public class MainApplication extends Application implements ReactApplication {
 

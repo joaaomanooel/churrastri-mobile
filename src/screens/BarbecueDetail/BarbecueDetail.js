@@ -59,7 +59,7 @@ export default ({ navigation, user }) => {
         </TopContainer>
         <Description>{barbecue.description}</Description>
         <ListView>
-          {participants.length && participants.map(participant => (
+          {!!participants.length && participants.map(participant => (
             <ItemContainer>
               <Name ellipsizeMode="tail" numberOfLines={1}>{participant.name}</Name>
               <Price>{toCurrency((barbecue.price || 0) / participants.length)}</Price>

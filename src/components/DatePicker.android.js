@@ -9,18 +9,26 @@ export default React.memo(({ onSave, value }) => {
   const [show, setShow] = useState(false);
 
   const handleDate = (_event, newDate) => {
+    setShow(false);
     setDate(newDate || date);
     onSave(date);
   };
 
-  return show && (
+  return (
     <>
       <CardToPicker
         value={format(date, 'dd/MM/yyyy')}
         onPress={() => setShow(true)}
         label={t('date')}
       />
-      {show && <DatePicker onChange={handleDate} display="calendar" locale="pt-br" value={date} />}
+      {!!show && (
+        <DatePicker
+          onChange={handleDate}
+          display="calendar"
+          locale="pt-br"
+          value={date}
+        />
+      )}
     </>
   );
 });

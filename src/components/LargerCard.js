@@ -63,7 +63,7 @@ export default React.memo(({ data = {}, size = 1 }) => {
           <BottomView>
             <Icon name="account-multiple-outline" contentSize={size} />
             <BottomText contentSize={size}>
-              {data.participants && data.participants.length || 0}
+              {!!data.participants && data.participants.length || 0}
             </BottomText>
           </BottomView>
           <BottomView>

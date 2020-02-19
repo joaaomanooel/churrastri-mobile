@@ -1,7 +1,7 @@
 apply plugin: "com.android.application"
+apply from: "../../node_modules/react-native-vector-icons/fonts.gradle"
 
 import com.android.build.OutputFile
-
 /**
  * The react.gradle file registers a task for each build variant (e.g. bundleDebugJsAndAssets
  * and bundleReleaseJsAndAssets).
@@ -183,6 +183,7 @@ dependencies {
     implementation "com.facebook.react:react-native:+"  // From node_modules
     implementation project(':lottie-react-native')
     implementation project(':react-native-vector-icons')
+    implementation project(':@react-native-community_datetimepicker')
 
     if (enableHermes) {
         def hermesPath = "../../node_modules/hermes-engine/android/";

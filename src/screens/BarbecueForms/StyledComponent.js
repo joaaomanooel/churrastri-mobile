@@ -13,9 +13,9 @@ export const Container = styled.ScrollView`
 export const FormView = styled.KeyboardAvoidingView``;
 
 const IconContainer = styled.TouchableOpacity.attrs({ activeOpacity: 0.7 })`
+  top: ${layout.statusBarHeight + (layout.scale() * 30)};
   position: absolute;
   z-index: 15;
-  top: 50;
 `;
 
 export const ArrowContainer = styled(IconContainer)`
