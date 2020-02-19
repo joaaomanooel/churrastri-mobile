@@ -23,9 +23,11 @@ export default ({
   const [showButton, setShowButton] = useState(true);
 
   const barbecue = navigation.getParam('barbecue') || {};
+
+  const barbecuePrice = toCurrency(parseFloat(barbecue.price || 0));
   const [title, setTitle] = useState(barbecue.title);
   const [description, setDescription] = useState(barbecue.description);
-  const [price, setPrice] = useState(barbecue.price || toCurrency('0'));
+  const [price, setPrice] = useState(barbecuePrice || toCurrency(0));
   const [date, setDate] = useState(barbecue.date);
   const [participants, setParticipants] = useState(barbecue.participants || []);
   const [users, setUsers] = useState(usr || []);
