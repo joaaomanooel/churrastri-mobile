@@ -150,7 +150,7 @@ android {
             keyPassword 'android'
         }
         release {
-          storeFile rootProject.file("app/testapp.jks")
+          storeFile rootProject.file("app/release.keystore")
           keyAlias System.getenv('APPCENTER_KEY_ALIAS')
           storePassword System.getenv('APPCENTER_KEYSTORE_PASSWORD')
           keyPassword System.getenv('APPCENTER_KEY_PASSWORD')
