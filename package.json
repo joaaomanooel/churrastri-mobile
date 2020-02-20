@@ -3,14 +3,14 @@
   "version": "0.0.1",
   "private": true,
   "scripts": {
-    "android": "react-native run-android",
-    "ios": "react-native run-ios",
-    "start": "react-native start",
+    "android": "react-native run-android --appIdSuffix debug",
     "clean:android": "cd android && ./gradlew",
-    "test": "jest",
-    "lint": "eslint .",
     "react:devtool": "react-devtools",
-    "redux:devtool": "remotedev"
+    "start": "react-native start",
+    "ios": "react-native run-ios",
+    "redux:devtool": "remotedev",
+    "lint": "eslint .",
+    "test": "jest"
   },
   "dependencies": {
     "@react-native-community/async-storage": "^1.7.1",
