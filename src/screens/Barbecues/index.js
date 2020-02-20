@@ -10,7 +10,8 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  getBarbecues: dispatch(BarbecuesActions.getBarbecuesRequest()),
+  startup: dispatch(BarbecuesActions.getBarbecuesRequest()),
+  getBarbecues: () => dispatch(BarbecuesActions.getBarbecuesRequest()),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Barbecues);
