@@ -16,6 +16,7 @@ export default ({ navigation, barbecues: bbq, loading, getBarbecues }) => {
   return (
     <>
       <Container
+        loading={loading}
         onScrollBeginDrag={() => setShowButton(false)}
         onScrollEndDrag={() => setShowButton(true)}
         refreshControl={(
@@ -24,7 +25,6 @@ export default ({ navigation, barbecues: bbq, loading, getBarbecues }) => {
             colors={[colors.yellow()]}
             onRefresh={getBarbecues}
             refreshing={loading}
-            title="TEST"
           />
         )}
       >

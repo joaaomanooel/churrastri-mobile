@@ -3,6 +3,7 @@ import { colors, layout } from '@/constants';
 import { AnimatedButton } from '@/components';
 
 export const Container = styled.ScrollView`
+  ${({ loading }) => loading && `margin-top: ${layout.statusBarHeight}`};
   width: ${layout.screenWidth};
   flex: 1;
 `;
