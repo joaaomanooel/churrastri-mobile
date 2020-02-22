@@ -18,7 +18,7 @@ import {
   Price,
 } from './StyledComponent';
 
-export default ({ navigation, user }) => {
+export default ({ navigation, user, updateBarbecues }) => {
   const [showButton, setShowButton] = useState(true);
   const barbecue = navigation.getParam('barbecue') || {};
 
@@ -37,6 +37,11 @@ export default ({ navigation, user }) => {
   const handlePaid = (participant) => {
     const users = participants.filter(i => i._id !== participant._id);
     setParticipants(sortByName([...users, { ...participant, paid: !participant.paid }]));
+  };
+
+  const save = () => {
+    updateBarbecues({ ...barbecue, paid: participants.map((p) => { if (p.paid) return p._id; }) });
+    navigation.goBack();
   };
 
   return (
@@ -70,7 +75,7 @@ export default ({ navigation, user }) => {
           ))}
         </ListView>
       </Container>
-      <Button text={t('save')} show={showButton} />
+      <Button text={t('save')} onPress={save} show={showButton} />
     </>
   );
 };
