@@ -9,7 +9,7 @@ const Touchable = styled.TouchableOpacity.attrs({ activeOpacity: 0.80 })`
 
 const Label = styled.Text`
   font-size: ${layout.scale() * 18};
-  color: ${colors.black(0.8)};
+  color: ${colors.black()};
   font-weight: bold;
 `;
 
@@ -24,7 +24,7 @@ const Input = styled.View`
 
 const InputContent = styled.Text`
   font-size: ${layout.scale() * 16};
-  color: ${colors.black(0.8)};
+  color: ${colors.black()};
 `;
 
 export default React.memo(({ onPress = {}, label, value }) => {
@@ -32,7 +32,7 @@ export default React.memo(({ onPress = {}, label, value }) => {
     <Touchable onPress={onPress}>
       <Label>{label}</Label>
       <Input>
-        {!value && <InputContent style={{ color: colors.black(0.3) }}>Selecione</InputContent>}
+        {!value && <InputContent style={{ color: colors.black() }}>Selecione</InputContent>}
         <InputContent ellipsizeMode="tail" numberOfLines={1}>{value}</InputContent>
       </Input>
     </Touchable>

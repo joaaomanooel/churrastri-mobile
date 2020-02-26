@@ -32,7 +32,7 @@ const ButtomContainer = styled.View`
 
 const Text = styled.Text`
   font-size: ${layout.scale() * 16};
-  color: ${colors.black(0.8)};
+  color: ${colors.black()};
 `;
 
 export default React.memo(({ onSave, value }) => {

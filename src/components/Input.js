@@ -9,7 +9,7 @@ const Container = styled.View`
 
 const Label = styled.Text`
   font-size: ${layout.scale() * 18};
-  color: ${colors.black(0.8)};
+  color: ${colors.black()};
   font-weight: bold;
 `;
 
@@ -19,7 +19,7 @@ const Input = styled.TextInput`
   margin-vertical: ${layout.scale() * 10};
   background-color: ${colors.white()};
   font-size: ${layout.scale() * 16};
-  color: ${colors.black(0.8)};
+  color: ${colors.black()};
   justify-content: center;
 `;
 

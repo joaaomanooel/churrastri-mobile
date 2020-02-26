@@ -9,7 +9,7 @@ const Button = styled.TouchableOpacity.attrs({ hitSlop: layout.largeHitSlop, act
   margin-vertical: ${layout.scale() * 30};
   border-radius: ${layout.scale() * 20};
   width: ${layout.screenWidth * 0.85};
-  background-color: ${colors.black(0.8)};
+  background-color: ${colors.black()};
   justify-content: center;
   align-items: center;
   align-self: center;

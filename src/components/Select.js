@@ -28,7 +28,7 @@ const Touchable = styled.TouchableOpacity.attrs({ activeOpacity: 0.80 })`
 
 const Text = styled.Text`
   font-size: ${layout.scale() * 16};
-  color: ${colors.black(0.8)};
+  color: ${colors.black()};
 `;
 
 const ItemContainer = styled.TouchableOpacity.attrs({ activeOpacity: 0.80 })`
@@ -45,7 +45,7 @@ const ItemContainer = styled.TouchableOpacity.attrs({ activeOpacity: 0.80 })`
 
 const Name = styled.Text`
   font-size: ${layout.scale() * 16};
-  color: ${colors.black(0.8)};
+  color: ${colors.black()};
 `;
 
 const ListView = styled.ScrollView``;
@@ -88,7 +88,7 @@ export default React.memo(({ data: usr = [], participants, onSave = () => { } })
   return (
     <>
       <CardToPicker
-        value={`${[...participants.map(i => i.selected && i.name)]}`}
+        value={`${[...participants.map(i => i.selected && i.username)]}`}
         onPress={() => setShow(true)}
         label={t('participants')}
       />
@@ -102,7 +102,7 @@ export default React.memo(({ data: usr = [], participants, onSave = () => { } })
             {sortByName(data).map((i) => {
               return (
                 <ItemContainer key={i._id} selected={i.selected} onPress={() => handleItem(i)}>
-                  <Name ellipsizeMode="tail" numberOfLines={1}>{i.name}</Name>
+                  <Name ellipsizeMode="tail" numberOfLines={1}>{i.username}</Name>
                 </ItemContainer>
               );
             })}

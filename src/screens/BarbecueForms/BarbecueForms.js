@@ -41,6 +41,10 @@ export default ({
   };
 
   useEffect(() => {
+    if (usr) setUsers(usr);
+  }, [usr]);
+
+  useEffect(() => {
     setParticipants(participants.map(p => ({ ...p, selected: true })));
   }, []);
 

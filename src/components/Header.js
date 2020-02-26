@@ -15,7 +15,7 @@ const Title = styled.Text`
   letter-spacing: ${layout.scale() * 2};
   margin-top: ${layout.statusBarHeight};
   font-size: ${layout.scale() * 36};
-  color: ${colors.black(0.8)};
+  color: ${colors.black()};
   align-self: center;
   font-weight: 700;
 `;

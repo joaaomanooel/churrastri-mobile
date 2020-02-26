@@ -7,7 +7,7 @@ import MaterialIcon from 'react-native-vector-icons/MaterialCommunityIcons';
 
 const DateContainer = styled.View`
   border-right-width: ${layout.scale() * 3};
-  border-right-color: ${colors.black(0.8)};
+  border-right-color: ${colors.black()};
   padding-right: ${layout.scale() * 20};
   justify-content: center;
   align-items: center;
@@ -15,7 +15,7 @@ const DateContainer = styled.View`
 
 const DateBigText = styled.Text`
   font-size: ${({ contentSize }) => contentSize * (layout.scale() * 24)};
-  color: ${colors.black(0.8)};
+  color: ${colors.black()};
   font-weight: 900;
 `;
 
@@ -27,7 +27,7 @@ const RightView = styled.View`
 
 const Title = styled.Text.attrs({ ellipsizeMode: 'tail', numberOfLines: 1 })`
   font-size: ${({ contentSize }) => contentSize * (layout.scale() * 16)};
-  color: ${colors.black(0.8)};
+  color: ${colors.black()};
   font-weight: 800;
 `;
 
@@ -45,7 +45,7 @@ const Icon = styled(MaterialIcon).attrs(({ contentSize }) => ({
 const BottomText = styled.Text`
   padding-left: ${layout.scale() * 5};
   font-size: ${({ contentSize }) => contentSize * (layout.scale() * 16)};
-  color: ${colors.black(0.8)};
+  color: ${colors.black()};
   font-weight: 400;
 `;
 
