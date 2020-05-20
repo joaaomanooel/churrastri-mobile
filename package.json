@@ -10,7 +10,9 @@
     "ios": "react-native run-ios",
     "redux:devtool": "remotedev",
     "lint": "eslint .",
-    "test": "jest"
+    "test": "jest",
+    "snyk-protect": "snyk protect",
+    "prepare": "yarn run snyk-protect"
   },
   "dependencies": {
     "@react-native-community/async-storage": "^1.7.1",
@@ -44,7 +46,8 @@
     "redux-saga": "^1.1.3",
     "remote-redux-devtools": "^0.5.16",
     "remotedev-server": "^0.3.1",
-    "styled-components": "^5.0.0"
+    "styled-components": "^5.0.0",
+    "snyk": "^1.323.0"
   },
   "devDependencies": {
     "@babel/core": "^7.8.3",
@@ -65,5 +68,6 @@
   },
   "jest": {
     "preset": "react-native"
-  }
+  },
+  "snyk": true
 }
