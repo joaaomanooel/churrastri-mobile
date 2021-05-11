@@ -1,4 +1,3 @@
-# git_url("https://leonardoq:4uakqcyxaazvdpls2r3qyjpn2y6uiaaa65pg4nz6vzy7m55napga@dev.azure.com/trinca/CMPC/_git/certificates")
 git_url ENV["FASTLANE_MATCH_GIT_REPO"]
 git_branch ENV["FASTLANE_MATCH_GIT_BRANCH"]
 
