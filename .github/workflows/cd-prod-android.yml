@@ -23,7 +23,7 @@ jobs:
         run: bundle install
 
       - name: Install packages
-        run: yarn config set network-timeout 100000 & yarn --frozen-lockfile
+        run: yarn config set network-timeout 100000 && yarn install
 
       - name: Build
         run: fastlane android build

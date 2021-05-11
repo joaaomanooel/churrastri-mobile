@@ -1,0 +1,2 @@
+Device ID	Device Name
+fe902a1301bf63ff5093f72e0ea5700000077700	João Manoel Martino Neto - iPhone 11 Pro	ios
